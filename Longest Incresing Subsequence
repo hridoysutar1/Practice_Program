@@ -1,0 +1,30 @@
+package Practice_projects;
+
+public class long_incre_subsequence {
+    static int sub(int[] arr,int l){
+        int [] maxAraay=new int[l];
+        for (int i=0;i<l;i++){
+            maxAraay[i]=1;
+        }
+        for (int i=1;i<l;i++){
+            for (int j=0;j<i;j++){
+                if(arr[i]>arr[j]&&maxAraay[i]<maxAraay[j]+1){
+                    maxAraay[i]=maxAraay[j]+1;
+                }
+            }
+        }
+        int longest=0;
+        for (int i=0;i<l;i++){
+            if(longest<maxAraay[i]){
+                longest=maxAraay[i];
+            }
+        }
+        return longest;
+    }
+    public static void main(String[] args) {
+        int [] arr={35,24,25,86,67,90,26,93};
+        int len= arr.length;
+        int x=sub(arr,len);
+        System.out.println("Longest increasing subsequence: "+x);
+    }
+}
